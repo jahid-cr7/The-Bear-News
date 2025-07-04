@@ -15,10 +15,11 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'category/:id',
+        path: "category/:id",
         element: <CategoryNews />,
-      }
-    ]
+        loader: () => fetch("/news.json"),
+      },
+    ],
   },
   {
     path: "/*",
