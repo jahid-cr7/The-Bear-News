@@ -1,10 +1,11 @@
 import React, { use } from "react";
 import { TbHandClick } from "react-icons/tb";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Auth/AuthContext";
 import Swal from "sweetalert2";
 
 const Register = () => {
+  const navigate = useNavigate();
   const { CreateUser, updateUser, setUser } = use(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
@@ -38,6 +39,7 @@ const Register = () => {
             confirmButtonText: "OK",
           });
         }
+        navigate("/auth/login");
       })
       .catch((error) => {
         console.error("Registration Error:", error);

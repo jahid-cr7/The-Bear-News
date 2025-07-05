@@ -1,12 +1,14 @@
 import React, { use } from "react";
-import { Link, NavLink } from "react-router";
-import user1 from "../assets/user.png";
+import { Link, NavLink, useNavigate } from "react-router";
+
 import { AuthContext } from "../Auth/AuthContext";
 import Swal from "sweetalert2";
 const Navbar = () => {
+  const navigate = useNavigate();
   const { user, signout } = use(AuthContext);
   const signoutNow = () => {
     signout().then(() => {
+      navigate("/auth/login");
       Swal.fire({
         title: "Sign Out Successful",
         text: "You have been signed out successfully.",
@@ -44,11 +46,13 @@ const Navbar = () => {
           <span className="text-sm text-gray-700">{user.displayName}</span>
         )}
 
-        <div className="avatar">
-          <div className="ring-primary ring-offset-base-100 w-6 rounded-full ring-2 ring-offset-2">
-            <img src={user.photoURL} />
+        {user && (
+          <div className="avatar">
+            <div className="ring-primary w-6 rounded-full ring-2 ring-offset-1">
+              <img src={user.photoURL} alt="User Avatar" />
+            </div>
           </div>
-        </div>
+        )}
 
         {user ? (
           <button

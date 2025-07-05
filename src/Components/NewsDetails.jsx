@@ -13,17 +13,18 @@ const NewsDetails = () => {
         setNews(news);
     }, [data, id]);
     return (
-        <div className='w-11/12 mx-auto'>
-            <Header></Header>
-            <section className=' grid grid-cols-12'>
-                <main className='col-span-9'>
-                    <h1 className='mb-4 font-bold text-2xl'>Bear News</h1>
+      <div className="w-11/12 mx-auto">
+        <Header></Header>
+        <section className=" grid grid-cols-12">
+          <main className="col-span-9">
+            <h1 className="mb-4 font-bold text-2xl">Bear News</h1>
             <NewsDetailsCard news={news}></NewsDetailsCard>
-            </main>
-            <aside className='col-span-3 sticky top-0 h-screen'>
-                <RightAside></RightAside></aside>
-            </section>
-        </div>
+          </main>
+          <aside className="col-span-3 top-0 h-screen">
+            <RightAside></RightAside>
+          </aside>
+        </section>
+      </div>
     );
 };
 

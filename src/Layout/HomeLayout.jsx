@@ -1,12 +1,15 @@
-import React from "react";
-import { Outlet } from "react-router";
+import React, { use } from "react";
+import { Outlet, useNavigation } from "react-router";
 import Header from "../Components/Header";
 import LatestNews from "../Components/LatestNews";
 import Navbar from "../Components/Navbar";
 import LeftAside from "../Components/HomeLayout/LeftAside";
 import RightAside from "../Components/HomeLayout/RightAside";
+import { AuthContext } from "../Auth/AuthContext";
 
 const HomeLayout = () => {
+  const { loading } = use(AuthContext);
+  const navigation = useNavigation();
   return (
     <div>
       <header>
@@ -23,7 +26,13 @@ const HomeLayout = () => {
           <LeftAside />
         </aside>
         <section className="main col-span-6">
-          <Outlet />
+          {navigation.state == "loading" ? (
+            <div className="flex justify-center items-center min-h-screen">
+              <span className="loading loading-ring loading-7xl size-25"></span>
+            </div>
+          ) : (
+            <Outlet />
+          )}
         </section>
         <aside className="col-span-3 sticky top-0 h-screen">
           <RightAside />
