@@ -40,9 +40,15 @@ const Navbar = () => {
         </ol>
       </div>
       <div className="login_button flex items-center gap-5">
-        {user && <span className="text-sm text-gray-700">{user.email}</span>}
+        {user && (
+          <span className="text-sm text-gray-700">{user.displayName}</span>
+        )}
 
-        <img className="w-[30px]" src={user1} alt="" />
+        <div className="avatar">
+          <div className="ring-primary ring-offset-base-100 w-6 rounded-full ring-2 ring-offset-2">
+            <img src={user.photoURL} />
+          </div>
+        </div>
 
         {user ? (
           <button
