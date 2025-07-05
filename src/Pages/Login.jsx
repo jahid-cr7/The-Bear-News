@@ -8,17 +8,15 @@ import Swal from "sweetalert2";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  
   const { signInUser } = use(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+
     signInUser(email, password)
       .then((result) => {
-        console.log(result.user);
-
         if (result.user) {
           e.target.reset();
           Swal.fire({

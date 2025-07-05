@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import { Outlet, useNavigation } from "react-router";
 import Header from "../Components/Header";
 import LatestNews from "../Components/LatestNews";
@@ -8,7 +8,6 @@ import RightAside from "../Components/HomeLayout/RightAside";
 import { AuthContext } from "../Auth/AuthContext";
 
 const HomeLayout = () => {
-  const { loading } = use(AuthContext);
   const navigation = useNavigation();
   return (
     <div>
